@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import IncidentTable from '../../components/IncidentTable';
-import {getData} from '../../data';
+import { getData } from '../../api';
 
 const List = () => {
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../../components/Layout';
-import { getDataById, IncidentType, updateData } from '../../data';
+import { getDataById, updateData } from '../../api';
+import { IncidentType } from '../../api/types'
 
 type MyState = IncidentType;
 class EditItem extends React.Component<any, MyState> {

@@ -5,7 +5,7 @@ import {
     OtherDataWrapper
 } from './atoms';
 import EditButton from './EditButton';
-import { IncidentType } from '../../data';
+import { IncidentType } from '../../api/types';
 
 type IncidentItemType = {
     itemData: IncidentType;
