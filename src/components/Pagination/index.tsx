@@ -2,8 +2,7 @@ import React from 'react'
 import Pagination from "react-js-pagination";
 import s from 'styled-components';
 import './pagination.scss'
-import conf from './../../config.json'
-const { itemsCountPerPage } = conf
+const itemsCountPerPage = 7
 
 
 const PaginationWrapper = s.section`

@@ -1,17 +1,13 @@
 import s from 'styled-components';
+import { Link } from 'react-router-dom';
 import { defaultColor, lightColor, secondaryColor } from '../Global/theme'
 import  '../Global/theme.scss'
 
-
-export const StyledTableItem = s.section`
+export const TableItemWrapper = s.section`
     border-bottom: 1px solid silver;
     padding: 2px;
 `
-export const UserDataWrapper = s.div`
-    display: flex;
-    justify-content: space-between;
-`
-export const OtherDataWrapper = s.div`
+export const DataWrapper = s.div`
     display: flex;
     justify-content: space-between;
 `
