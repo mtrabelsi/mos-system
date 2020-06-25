@@ -1,0 +1,30 @@
+@import './../Global/theme.scss';
+
+.pagination {
+    padding-left: 0;
+    display: flex;
+    list-style-type: none;
+    & > li {
+        padding: 4px;
+        & > a {
+            color: $default-color;
+            padding: 15px 6px;
+            text-decoration: none;
+        }
+        &:hover {
+            background-color: $secondary-color-shade;
+        }
+        &.active {
+            background-color: $secondary-color;
+            & > a {
+                color: $very-light-color;
+                font-weight: 600;
+            }
+        }
+
+    } 
+     
+}
+  
+  
+  

@@ -1,0 +1,33 @@
+
+$default-color  : #4C4C4C;
+$primary-color : #004D80;
+$secondary-color : #f18e5e;
+$secondary-color-shade : #f18e5e52;
+
+$light-color : gray;
+$very-light-color  : white;
+
+$screen-md-min: 425px;
+$screen-lg-min: 768px;
+$screen-xlg-min: 1440px;
+
+// Medium devices
+@mixin md {
+    @media (min-width: #{$screen-md-min}) {
+        @content;
+    }
+}
+ 
+ // Large devices
+ @mixin lg {
+    @media (min-width: #{$screen-lg-min}) {
+        @content;
+    }
+}
+ 
+// extra Large devices
+@mixin xlg {
+    @media (min-width: #{$screen-xlg-min}) {
+        @content;
+    }
+}
