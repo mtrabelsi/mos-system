@@ -6,7 +6,7 @@ import { RouteComponentProps } from 'react-router';
 
 const List : React.FC<RouteComponentProps & PropsWithChildren<{}> | {}> = (props) => {
     const { history } = props as RouteComponentProps
-    return (<Layout>
+    return (<Layout title="List of Incidents" history={history} showBackButton={false}>
         <IncidentTable 
             incidents={getData()}
             history={history}

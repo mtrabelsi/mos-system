@@ -1,11 +1,15 @@
 import React from 'react'
+import { RouteComponentProps } from 'react-router';
 import { 
     DataWrapper,
-    TableItemWrapper
+    TableItemWrapper,
+    ID,
+    Criticality,
+    Verified,
+    Address
 } from './atoms';
 import { IncidentType } from '../../api/types';
 import { IncidentItemType } from './types';
-import { RouteComponentProps } from 'react-router';
 
 function TableItem(props: IncidentItemType | RouteComponentProps) {
     const { incident } = props as IncidentItemType
@@ -19,8 +23,20 @@ function TableItem(props: IncidentItemType | RouteComponentProps) {
 
     return (
         <TableItemWrapper onClick={e => history.push(`/edit/${_id}`)}> 
+
             <DataWrapper>
-                {_id} {status.criticality} {status.verified} {address}
+                <Criticality>{status.criticality}</Criticality>
+                <Verified>
+                    {status.verified === true ?  'Verified' : 'Not verified'}
+                </Verified>
+            </DataWrapper>
+            
+            <DataWrapper>
+                <ID>{_id}</ID>
+            </DataWrapper>
+
+            <DataWrapper>
+                <Address>{address}</Address>
             </DataWrapper>
         </TableItemWrapper>
     )

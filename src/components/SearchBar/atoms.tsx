@@ -1,5 +1,5 @@
 import s from 'styled-components';
-import { defaultColor, primarytColor, lightColor, secondaryColor } from '../Global/theme'
+import { defaultColor, primarytColor, lightColor, secondaryColor } from '../Global'
 
 export const StyledSearchBar = s.input`
     padding: 5px;

@@ -1,7 +1,6 @@
 import React from 'react'
 import Pagination from "react-js-pagination";
 import s from 'styled-components';
-import './pagination.scss'
 const itemsCountPerPage = 7
 
 

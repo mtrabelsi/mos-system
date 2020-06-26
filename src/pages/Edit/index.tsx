@@ -63,10 +63,19 @@ class EditItem extends React.Component<any, MyState> {
             this.props.history.push('/');
         }
     }
-
     render() {
+        const { history } = this.props
+
         return (
-            <Layout>
+            <Layout 
+                showBackButton 
+                history={history}
+                title="Edit Incident"
+                topBarStyle={{ 
+                    alignItems: 'center'
+                }}
+            >
+                
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         status criticality:
