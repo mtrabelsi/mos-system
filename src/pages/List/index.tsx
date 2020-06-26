@@ -42,7 +42,7 @@ const List : React.FC<RouteComponentProps & PropsWithChildren<{}> | {}> = (props
         />
 
         <SearchFeedback>
-            <SearchFeedbackItem>{incidentData.length} Search result found!</SearchFeedbackItem>
+            <SearchFeedbackItem><b>{incidentData.length}</b> Incidents per page</SearchFeedbackItem>
             <SearchFeedbackItem>Page {filter.pageNumber}</SearchFeedbackItem>
         </SearchFeedback>
 
