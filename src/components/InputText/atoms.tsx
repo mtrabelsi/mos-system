@@ -48,7 +48,9 @@ export const Label = s.label`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  padding: 6px 0;
 `
 export const LabelText = s.span`
   width: 100%;
+  text-transform: uppercase;
 `

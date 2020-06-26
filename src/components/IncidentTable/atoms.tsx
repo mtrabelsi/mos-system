@@ -6,6 +6,9 @@ export const TableItemWrapper = s.section`
     border-bottom: 1px solid silver;
     padding: 2px;
 `
+const UppercaseDiv = s.div`
+    text-transform: uppercase;
+`
 export const DataWrapper = s.div`
     display: flex;
     justify-content: space-between;
@@ -13,9 +16,9 @@ export const DataWrapper = s.div`
 `
 export const ID = s.div``
 
-export const Criticality = s.div``
+export const Criticality = s(UppercaseDiv)``
 
-export const Verified = s.div``
+export const Verified = s(UppercaseDiv)``
 
 export const Address = s.div`
     font-style: italic;
