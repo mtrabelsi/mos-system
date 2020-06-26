@@ -14,7 +14,7 @@ export function getData(keyword?: string) : Array<IncidentType> {
     localStorage.setItem(STORAGE_NAME, JSON.stringify(storedData));
   }
   if(keyword) {
-    storedData = filterList(keyword, 'address', storedData)
+    storedData = filterList(keyword, ['address', '_id'], storedData)
   }
   return storedData;
 }
@@ -41,7 +41,7 @@ export const paginate = (array : Array<any>, pageSize: number, pageNumber: numbe
   return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
 }
 
-export const filterList = (q: string, key: string, list: Array<IncidentType>): Array<IncidentType>  => {
+export const filterList = (q: string, keys: Array<string>, list: Array<IncidentType>): Array<IncidentType>  => {
     function escapeRegExp(s: string) {
       return s.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
     }
@@ -64,5 +64,5 @@ export const filterList = (q: string, key: string, list: Array<IncidentType>): A
         .join("") + ".+",
       "gi"
     );
-    return list.filter(item => searchRegex.test(item[key]));
+    return list.filter(item => searchRegex.test(item[keys[0]]) || searchRegex.test(item[keys[1]]) );
 }
