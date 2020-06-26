@@ -7,6 +7,9 @@ import { Label, LabelText } from '../../components/InputText/atoms';
 import Button from '../../components/Button';
 import { ControlButtons } from '../../components/Button/atoms';
 import { getPropByPath, generateFormData } from './helper';
+import checkIcon from './../../icons/check.png'
+import closeIcon from './../../icons/close.png'
+
 
 const EditItem: React.FC<any> =  (props) => {
         const { incidentId } = props.match.params;
@@ -20,9 +23,6 @@ const EditItem: React.FC<any> =  (props) => {
             switch (name) {
                 case 'status.criticality': 
                     copyOfOldItem.status.criticality = value;
-                    break;
-                case 'status.verified':
-                    copyOfOldItem.status.verified = parseInt(value) ? true : false;
                     break;
                 case 'position.from.latitude':
                     copyOfOldItem.position.from.latitude = value;
@@ -50,6 +50,11 @@ const EditItem: React.FC<any> =  (props) => {
             }
             setItemToEdit(copyOfOldItem)
         }
+        const changeStatus = (newStatus) => {
+            const copyOfOldItem = Object.assign({}, toEditItem)
+            copyOfOldItem.status.verified = newStatus
+            setItemToEdit(copyOfOldItem)
+        }
 
         const handleSubmit = () => {
             const updateStatus = updateData(toEditItem);
@@ -67,16 +72,24 @@ const EditItem: React.FC<any> =  (props) => {
                     alignItems: 'center'
                 }}
             >
-                <Label>
+                <Label style={{ flexWrap: 'nowrap' }}>
                     <LabelText>status verified:</LabelText>
-                    <select 
-                        value={toEditItem.status.verified ? 1 : 0} 
-                        name="status.verified" 
-                        onChange={handleChange}
-                    >
-                        <option value={1}>Yes</option>
-                        <option value={0}>No</option>
-                    </select>
+                    <Button 
+                        onClick={e => changeStatus(true)}
+                        outlineMode
+                        customWidth="50px"
+                        hasIconLeft={toEditItem.status.verified}
+                        iconLeft={checkIcon}
+                    />
+                    <Button 
+                        onClick={e => changeStatus(false)}
+                        isSpecial
+                        outlineMode
+                        hasIconLeft={!toEditItem.status.verified}
+                        iconLeft={closeIcon}
+                        customWidth="50px"
+                        customMargin="0 0 0 10px"
+                    />
                 </Label>
 
                 {formData.map(fd => (<Label>

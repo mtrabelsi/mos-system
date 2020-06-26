@@ -6,6 +6,7 @@ export const primarytColorLighter = '#00acac';
 export const secondaryColor = '#f18e5e';
 export const redColor = '#FFB100'
 export const lightColor = 'gray';
+export const specialLightColor = '#ebebeb';
 export const veryLightColor = 'white';
 export const blackColor = '#d4d4d'
 export const veryBlackColor = '#19000B'
