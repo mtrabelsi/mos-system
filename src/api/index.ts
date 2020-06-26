@@ -5,15 +5,18 @@ import { IncidentType } from './types';
 const STORAGE_NAME : string  = 'DB'
 
 
-export function getData() : Array<IncidentType> {
+export function getData(keyword?: string) : Array<IncidentType> {
+  let storedData : Array<IncidentType> = []
   if (localStorage.getItem(STORAGE_NAME)) {
-    const storedData: Array<IncidentType> = JSON.parse(localStorage.getItem(STORAGE_NAME));
-    return storedData;
+    storedData = JSON.parse(localStorage.getItem(STORAGE_NAME));
   } else {
-    const storedData: Array<IncidentType> = data;
+    storedData= data;
     localStorage.setItem(STORAGE_NAME, JSON.stringify(storedData));
-    return storedData;
   }
+  if(keyword) {
+    storedData = filterList(keyword, 'address', storedData)
+  }
+  return storedData;
 }
 
 export function getDataById(_id : string) : IncidentType {
@@ -32,4 +35,31 @@ export function updateData(newIncident: IncidentType) : boolean {
     throw new Error(`something went wrong when setting the data to storage ${e.message}`)
   }
   return true;
+}
+
+
+export const filterList = (q: string, key: string, list: Array<IncidentType>): Array<IncidentType>  => {
+    function escapeRegExp(s: string) {
+      return s.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
+    }
+    const words = q
+      .split(/\s+/g)
+      .map(s => s.trim())
+      .filter(s => !!s);
+    const hasTrailingSpace = q.endsWith(" ");
+    const searchRegex = new RegExp(
+      words
+        .map((word, i) => {
+          if (i + 1 === words.length && !hasTrailingSpace) {
+            // The last word - ok with the word being "startswith"-like
+            return `(?=.*\\b${escapeRegExp(word)})`;
+          } else {
+            // Not the last word - expect the whole word exactly
+            return `(?=.*\\b${escapeRegExp(word)}\\b)`;
+          }
+        })
+        .join("") + ".+",
+      "gi"
+    );
+    return list.filter(item => searchRegex.test(item[key]));
 }

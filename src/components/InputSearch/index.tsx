@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SearchIcon from './../../assets/icons/Search.png'
-import CloseIcon from './../../assets/icons/Close.png'
+import SearchIcon from './../../icons/search.png'
+import CloseIcon from './../../icons/close.png'
 
 import InputText from './../InputText'
 import { InputSearchWrap, MarginFix } from './atoms';
@@ -14,10 +14,12 @@ const InputSearch : React.FC<any> = (props) => {
               <InputText
                 placeholder={props.placeholder || 'Placeholder not set!'}
                 rightIcon={isInputDirty ? CloseIcon : SearchIcon}
+                rightIconClickHandler={() => props.rightIconClickHandler(isInputDirty)}
+                onChange={props.onChange}
+                value={props.value}
                 hasIconRight={true}
                 primaryBorder={true}
                 primaryColor={true}
-                {...props}
               />
             </MarginFix>
 

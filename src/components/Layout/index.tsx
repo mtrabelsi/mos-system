@@ -2,6 +2,8 @@ import React from 'react';
 import {LayoutMain, LayoutTopBar, LayoutTitle} from './atoms';
 import Button from '../Button';
 import { title } from 'process';
+import iconLeft from './../../icons/left-arrow.png'
+import { primarytColor } from '../Global';
 
 type LayoutProps = {
     children : React.ReactNode,
@@ -25,8 +27,11 @@ export const  Layout: React.FC<LayoutProps> = (props) => {
 
         <LayoutTopBar style={{...topBarStyle, flexWrap: 'wrap'}}>
             {showBackButton &&<Button 
+                hasIconLeft
+                textColor={primarytColor}
+                iconLeft={iconLeft}
                 onClick={e => history.goBack()}
-                value="Home"
+                value="Back"
             />}
             {title !== '' && <LayoutTitle>{title}</LayoutTitle>}
         </LayoutTopBar>

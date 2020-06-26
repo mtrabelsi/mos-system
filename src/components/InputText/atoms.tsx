@@ -6,12 +6,17 @@ import {
     secondaryColor,
     lightColor,
     smFontSize,
-    fontFamily
+    fontFamily,
+    successColor
   } from './../Global'
 
 export const InputWrap = s.div`
   border-bottom: 1px solid ${lightColor};
   display: flex;
+  width: 100%;
+  :focus-within {
+    border-bottom: 2px solid ${successColor};
+  }
 `
 export const Input = s.input`
   color: ${lightColor};
@@ -27,9 +32,19 @@ export const Input = s.input`
     font-family: ${fontFamily};
     opacity: 0.4;
   }
+  :focus {
+  }
 `
 export const Img = s.img`
   height: 20px;
   padding: 9px;
   cursor: pointer;
+`
+export const Label = s.label`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+export const LabelText = s.span`
+  width: 100%;
 `

@@ -1,7 +1,11 @@
 import React from 'react';
 import Layout from '../../components/Layout';
+import InputText from '../../components/InputText';
 import { getDataById, updateData } from '../../api';
 import { IncidentType } from '../../api/types'
+import { Label, LabelText } from '../../components/InputText/atoms';
+import Button from '../../components/Button';
+import { ControlButtons } from '../../components/Button/atoms';
 
 type MyState = IncidentType;
 class EditItem extends React.Component<any, MyState> {
@@ -77,99 +81,116 @@ class EditItem extends React.Component<any, MyState> {
             >
                 
                 <form onSubmit={this.handleSubmit}>
-                    <label>
-                        status criticality:
-                            <input
+                    <Label>
+                        <LabelText>status criticality:</LabelText>
+                            <InputText
                             name="status[criticality]"
                             type="text"
                             value={this.state.status.criticality}
                             onChange={this.handleChange} />
 
-                    </label>
+                    </Label>
                     <br />
-                    <label>
-                        status verified:
+                    <Label>
+                        <LabelText>status verified:</LabelText>
                         <select value={this.state.status.verified ? 1 : 0} name="status[verified]" onChange={this.handleChange}>
                             <option value={1}>Yes</option>
                             <option value={0}>No</option>
                         </select>
-                    </label>
+                    </Label>
                     <br />
 
-                    <label>
-                        address:
-                        <input
+                    <Label>
+                        <LabelText>address:</LabelText>
+                        <InputText
                             name="address"
                             type="text"
                             value={this.state.address}
                             onChange={this.handleChange} />
-                    </label>
+                    </Label>
                     <br />
-                    <label>
-                        from latitude :
-                        <input
+                    <Label>
+                        <LabelText>from latitude :</LabelText>
+                        <InputText
                             name="status[position][from][latitude]"
                             type="number"
                             value={this.state.position.from.latitude}
                             onChange={this.handleChange} />
-                    </label>
+                    </Label>
                     <br />
-                    <label>
-                        from longitude :
-                        <input
+                    <Label>
+                        <LabelText>from longitude :</LabelText>
+                        <InputText
                             name="status[position][from][longitude]"
                             type="number"
                             value={this.state.position.from.longitude}
                             onChange={this.handleChange} />
-                    </label>
+                    </Label>
                     <br />
 
-                    <label>
-                        to latitude :
-                        <input
+                    <Label>
+                        <LabelText>to latitude :</LabelText>
+                        <InputText
                             name="status[position][to][latitude]"
                             type="number"
                             value={this.state.position.to.latitude}
                             onChange={this.handleChange} />
-                    </label>
+                    </Label>
                     <br />
-                    <label>
-                        to longitude :
-                        <input
+                    <Label>
+                        <LabelText>to longitude :</LabelText>
+                        <InputText
                             name="status[position][to][longitude]"
                             type="number"
                             value={this.state.position.to.longitude}
                             onChange={this.handleChange} />
-                    </label>
+                    </Label>
                     <br />
-                    <label>
-                        startTime :
-                        <input
+                    <Label>
+                        <LabelText>startTime :</LabelText>
+                        <InputText
                             name="status[interval][startTime]"
                             type="text"
                             value={this.state.interval.startTime}
                             onChange={this.handleChange} />
-                    </label>
+                    </Label>
                     <br />
-                    <label>
-                        endTime :
-                        <input
+                    <Label>
+                        <LabelText>endTime :</LabelText>
+                        <InputText
                             name="status[interval][endTime]"
                             type="text"
                             value={this.state.interval.endTime}
                             onChange={this.handleChange} />
-                    </label>
+                    </Label>
                     <br />
-                    <label>
-                        entryTime :
-                        <input
+                    <Label>
+                        <LabelText>entryTime :</LabelText>
+                        <InputText
                             name="status[interval][entryTime]"
                             type="text"
                             value={this.state.interval.entryTime}
                             onChange={this.handleChange} />
-                    </label>
+                    </Label>
                     <br />
-                    <input type="submit" value="Submit" />
+                    <ControlButtons>
+                        <Button
+                            customMargin="5px 0"
+                            customWidth="280px"
+                            successMode
+                            hasIconLeft={false}
+                            onClick={e => history.goBack()}
+                            value="Submit" 
+                        />
+                        <Button
+                            customMargin="5px 0"
+                            customWidth="280px"
+                            isDanger
+                            hasIconLeft={false}
+                            onClick={e => history.goBack()}
+                            value="Reset" 
+                        />
+                    </ControlButtons>
                 </form>
             </Layout>
         );

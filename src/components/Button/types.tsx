@@ -1,5 +1,8 @@
 
 export type ButtonPropType = {
+    textColor?: string,
+    customWidth?: string,
+    customMargin?: string,
     buttonStyle?: object,
     disabled?: boolean,
     iconLeft?: any,
@@ -7,9 +10,10 @@ export type ButtonPropType = {
     imgStyle?: object,
     value?: string,
     hasIconLeft?: boolean,
-    start?: boolean,
-    simpleMode?: boolean,
+    successMode?: boolean,
     special?: boolean,
     onClick?: (e: React.MouseEvent) => void,
-    isDanger?: boolean
+    isDanger?: boolean,
+    iconRight?: any,
+    hasIconRight?: boolean
 }

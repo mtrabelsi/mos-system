@@ -4,10 +4,8 @@ import { Img } from '../InputText/atoms';
 import { ButtonPropType } from './types';
 import { RouteComponentProps } from 'react-router-dom';
 
-
 const Btn: React.FC<ButtonPropType | RouteComponentProps> = (props) => {
   const {
-    start, 
     disabled,
     buttonStyle,
     iconLeft,
@@ -15,17 +13,19 @@ const Btn: React.FC<ButtonPropType | RouteComponentProps> = (props) => {
     value,
     imgStyle,
     textStyle, 
-    isDanger
+    isDanger,
+    hasIconRight,
+    iconRight
   } = props as ButtonPropType
   return (
     <Button
-      {...props}
-      start={start}
+      {...props as ButtonPropType}
       disabled={disabled}
       style={buttonStyle}
     >
       {hasIconLeft && iconLeft && <Img src={iconLeft} style={imgStyle} />}
       <ButtonText style={textStyle}>{value}</ButtonText>
+      {hasIconRight && iconRight && <Img src={iconRight} style={imgStyle} />}
     </Button>
   );
 }

@@ -9,13 +9,14 @@ import {
     defaultBoxShadow,
     specialBoxShadow,
     dangerColor,
-    defaultColor
+    defaultColor,
+    successColor
 } from './../Global'
 import { ButtonPropType } from './types'
 
 const decideBackground = (p: ButtonPropType) => {
-  if(p.simpleMode) {
-    return defaultColor;
+  if(p.successMode) {
+    return successColor;
   } else if(p.isDanger) {
     return dangerColor;
   } else {
@@ -23,13 +24,15 @@ const decideBackground = (p: ButtonPropType) => {
   }
 }
 export const Button = s.button<ButtonPropType>`
+  width: ${p => p.customWidth || 'default'};
   opacity: ${p => p.disabled ? 0.3 : 1};
   cursor: ${p => p.disabled ? 'none': 'pointer'};
   pointer-events: ${p => p.disabled ? 'none' : 'initial'};
-  box-shadow: ${p => p.simpleMode? specialBoxShadow : defaultBoxShadow};
+  box-shadow: ${p => p.successMode? specialBoxShadow : defaultBoxShadow};
   background: ${p => decideBackground(p)};
+  margin: ${p => p.customMargin || '0px'};
   border: none;
-  color: ${veryLightColor};
+  color: ${p => p.textColor || veryLightColor};
   padding: 5px 0;
   outline: none;
   min-width: 200px;
@@ -49,4 +52,10 @@ export const ButtonText = s.span`
   font-family: ${fontFamily};
   font-style: normal;
   text-transform: uppercase;
+`
+
+export const ControlButtons = s.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 `
