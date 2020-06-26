@@ -37,6 +37,9 @@ export function updateData(newIncident: IncidentType) : boolean {
   return true;
 }
 
+export const paginate = (array : Array<any>, pageSize: number, pageNumber: number) => {
+  return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
+}
 
 export const filterList = (q: string, key: string, list: Array<IncidentType>): Array<IncidentType>  => {
     function escapeRegExp(s: string) {

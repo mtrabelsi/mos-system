@@ -1,27 +1,66 @@
-import React from 'react'
-import Pagination from "react-js-pagination";
-import s from 'styled-components';
-const itemsCountPerPage = 7
+import React, { useState } from 'react'
+import {
+    RightNavigator,
+    LeftNavigator,
+    PaginationWrapper
+} from './atoms'
+import { PaginationCPropType, PageChangeSignature } from './types'
+import { ControlButtons, Button } from '../Button/atoms'
+import leftArrow from './../../icons/left-arrow.png'
+import rightArrow from './../../icons/right-arrow.png'
 
-
-const PaginationWrapper = s.section`
-    display: flex;
-    justify-content: center;
-`
-
-function PaginationC(props) {
-    //imit=25&offset=25
-    const { limit, offset, total, activePage, setActivePage }  = props
-
+function Pagination(props: PaginationCPropType) {
+    const { 
+        limit, 
+        offset, 
+        setFilter, 
+        lastQueriedLength,
+        itemsCountPerPage,
+        leftLabel,
+        rightLabel
+    }  = props
+    const FIRST_PAGE = 1
+    const [activePage, setActivePage] = useState<number>(FIRST_PAGE)
+    const handlePageChange : PageChangeSignature = (newPage) => {
+        setFilter({
+            limit,
+            offset: newPage * limit,
+            pageNumber: newPage
+        })
+        setActivePage(newPage)
+    }
     return (<PaginationWrapper>
-        <Pagination
-          activePage={activePage}
-          itemsCountPerPage={itemsCountPerPage}
-          totalItemsCount={total}
-          pageRangeDisplayed={5}
-          onChange={setActivePage}
-        />
+        <LeftNavigator 
+            disabled={activePage === FIRST_PAGE}
+            onClick={(e: React.MouseEvent) => handlePageChange(activePage-1)}
+        >
+            {(leftLabel || 'Prev').toUpperCase()}
+        </LeftNavigator>
+        <RightNavigator 
+            onClick={(e: React.MouseEvent) => handlePageChange(activePage+1)}
+            disabled={lastQueriedLength < itemsCountPerPage}
+        >
+            {(rightLabel || 'Next').toUpperCase()}
+        </RightNavigator>
+       {/*<ControlButtons>
+            <Button
+                customMargin="5px 0"
+                customWidth="280px"
+                iconLeft={leftArrow}
+                hasIconLeft
+                onClick={e => history.goBack()}
+                value="Prev" 
+            />
+            <Button
+                customMargin="5px 0"
+                customWidth="280px"
+                iconRight={rightArrow}
+                hasIconRight
+                onClick={e => history.goBack()}
+                value="Next" 
+            />
+       </ControlButtons>*/}
     </PaginationWrapper>)
 }
 
-export default PaginationC
+export default Pagination
