@@ -18,6 +18,7 @@ The application will be on port 3000
 ## Tools used:
 
 - ReactJS + Typscript
+- Icons self design using https://www.figma.com
 - 100% Vanilla jascript + CSS ( everything is written from scratch )
 - Theme & colors inspired from Siemens website:  https://new.siemens.com/ 
 - Styled-component : great tool for making contextual components
