@@ -3,9 +3,6 @@ import Layout from '../../components/Layout';
 import IncidentTable from '../../components/IncidentTable';
 import { getData, paginate } from '../../api';
 import { RouteComponentProps } from 'react-router';
-import { ControlButtons } from '../../components/Button/atoms';
-import Button from '../../components/Button'
-
 import InputSearch from '../../components/InputSearch';
 import { IncidentType } from '../../api/types';
 import { SearchFilter } from './types';
@@ -13,7 +10,6 @@ import Pagination from '../../components/Pagination';
 import { SearchFeedback, SearchFeedbackItem } from './atoms';
 
 const MAX_PER_PAGE = 7
-
 
 const List : React.FC<RouteComponentProps & PropsWithChildren<{}> | {}> = (props) => {
     const { history } = props as RouteComponentProps
