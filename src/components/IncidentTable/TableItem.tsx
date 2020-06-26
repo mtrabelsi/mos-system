@@ -25,8 +25,10 @@ function TableItem(props: IncidentItemType | RouteComponentProps) {
         <TableItemWrapper onClick={e => history.push(`/edit/${_id}`)}> 
 
             <DataWrapper>
-                <Criticality>{status.criticality}</Criticality>
-                <Verified>
+                <Criticality isCritical={status.criticality.toUpperCase() === 'CRITICAL'}>
+                    {status.criticality}
+                </Criticality>
+                <Verified isTrue={status.verified}>
                     {status.verified === true ?  'Verified' : 'Not verified'}
                 </Verified>
             </DataWrapper>

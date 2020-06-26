@@ -1,6 +1,6 @@
 import s from 'styled-components';
 import { Link } from 'react-router-dom';
-import { smPadding, primarytColor } from '../Global'
+import { smPadding, primarytColor, dangerColor, defaultColor } from '../Global'
 
 export const TableItemWrapper = s.section`
     border-bottom: 1px solid silver;
@@ -22,9 +22,13 @@ export const DataWrapper = s.div`
 `
 export const ID = s.div``
 
-export const Criticality = s(UppercaseDiv)``
+export const Criticality = s(UppercaseDiv)<any>`
+    color: ${p => p.isCritical === true ? 'red' : defaultColor }
+`
 
-export const Verified = s(UppercaseDiv)``
+export const Verified = s(UppercaseDiv)<any>`
+    color: ${p => p.isTrue ? primarytColor : dangerColor}
+`
 
 export const Address = s.div`
     font-style: italic;
