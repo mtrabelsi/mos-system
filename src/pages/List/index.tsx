@@ -32,6 +32,9 @@ const List : React.FC<RouteComponentProps & PropsWithChildren<{}> | {}> = (props
             onChange={handleChange}
             rightIconClickHandler={(shouldResetValue) => shouldResetValue && setKeyword('')}
         />
+        <div style={{ margin: '15px 0', fontWeight: 'bold' }}>
+            {incidentData.length} Search result found!
+        </div>
         <IncidentTable 
             incidents={incidentData}
             history={history}
