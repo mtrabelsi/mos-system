@@ -12,6 +12,7 @@ const InputSearch : React.FC<any> = (props) => {
             >
             <MarginFix>
               <InputText
+                isInputSearch={true}
                 placeholder={props.placeholder || 'Placeholder not set!'}
                 rightIcon={isInputDirty ? CloseIcon : SearchIcon}
                 rightIconClickHandler={() => props.rightIconClickHandler(isInputDirty)}

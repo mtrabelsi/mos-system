@@ -5,6 +5,7 @@ const InputBasic : React.FC<any> = (props) => {
     return(<InputWrap 
             {...props} 
             style={props.inputWrapperStyle}
+            isInputSearch={props.isInputSearch}
         >
         {props.hasIconLeft && 
             props.leftIcon && 
