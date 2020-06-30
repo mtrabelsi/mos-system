@@ -14,46 +14,57 @@ const MAX_PER_PAGE = 7
 const List : React.FC<RouteComponentProps & PropsWithChildren<{}> | {}> = (props) => {
     const { history } = props as RouteComponentProps
     const [keyword, setKeyword] =  useState<string>('')
-    const [incidentData, setInsidents] =  useState<Array<IncidentType>>([])
+    const [filtredIncidentData, setFiltredInsidents] =  useState<Array<IncidentType>>([])
+    const [paginatedIncidentData, setPaginatedInsidents] =  useState<Array<IncidentType>>([])
+
     const [filter, setFilter] = useState<SearchFilter>({ limit: MAX_PER_PAGE, pageNumber: 1 })
 
-    const handleChange = (e) => {
-        const value = e.target.value
+    const handleChange = (value) => {
         setKeyword(value)
+        handleSearch(value)
     }
-
+    const handleSearch = (key) => {
+        setFilter({
+            ...filter,
+            pageNumber: 1
+        })
+        let qIncidents = getData(key)
+        setFiltredInsidents(qIncidents)
+    }
     useEffect(() => {
-        let qIncidents = getData(keyword)
-        qIncidents = paginate(qIncidents, filter.limit, filter.pageNumber)
-        setInsidents(qIncidents)
-    }, [keyword, filter])
+        handleSearch('')
+    }, [])
+    useEffect(() => {
+        let pIncidents = paginate(filtredIncidentData, filter.limit, filter.pageNumber)
+        setPaginatedInsidents(pIncidents)
+    }, [filter, filtredIncidentData])
 
     return (<Layout title="List of Incidents" history={history} showBackButton={false}>
 
         <InputSearch 
             value={keyword}
-            onChange={handleChange}
-            rightIconClickHandler={(shouldResetValue) => shouldResetValue && setKeyword('')}
+            onChange={e => handleChange(e.target.value)}
+            rightIconClickHandler={(shouldResetValue) => shouldResetValue && handleChange('')}
             placeholder="Search by Address or by Id"
         />
 
         <SearchFeedback>
-            <SearchFeedbackItem><b>{incidentData.length}</b> Incidents per page</SearchFeedbackItem>
+            <SearchFeedbackItem><b>{paginatedIncidentData.length}</b> Incidents from total of {filtredIncidentData.length}</SearchFeedbackItem>
             <SearchFeedbackItem>Page {filter.pageNumber}</SearchFeedbackItem>
         </SearchFeedback>
 
         <IncidentTable 
-            incidents={incidentData}
+            incidents={paginatedIncidentData}
             history={history}
         />
 
         <Pagination 
             itemsCountPerPage={MAX_PER_PAGE}
-            lastQueriedLength={incidentData.length}
+            lastQueriedLength={paginatedIncidentData.length}
             limit={filter.limit}
             offset={filter.offset}
+            activePage={filter.pageNumber}
             setFilter={(f: SearchFilter) => {
-                console.log(f);
                setFilter({
                    ...filter,
                    pageNumber: f.pageNumber

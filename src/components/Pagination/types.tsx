@@ -8,6 +8,7 @@ export type PaginationCPropType = {
     lastQueriedLength: number,
     leftLabel?: string,
     rightLabel?: string,
+    activePage?: number,
     setFilter: (p: SearchFilter) => void
 }
 
