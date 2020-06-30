@@ -64,4 +64,5 @@ export const ControlButtons = s.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-top: 15px;
 `

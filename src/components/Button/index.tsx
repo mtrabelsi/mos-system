@@ -15,7 +15,8 @@ const Btn: React.FC<ButtonPropType | RouteComponentProps> = (props) => {
     textStyle, 
     isDanger,
     hasIconRight,
-    iconRight
+    iconRight,
+    iconLeftStyle
   } = props as ButtonPropType
   return (
     <Button
@@ -23,7 +24,7 @@ const Btn: React.FC<ButtonPropType | RouteComponentProps> = (props) => {
       disabled={disabled}
       style={buttonStyle}
     >
-      {hasIconLeft && iconLeft && <Img src={iconLeft} style={imgStyle} />}
+      {hasIconLeft && iconLeft && <Img src={iconLeft} style={{...imgStyle, ...iconLeftStyle}} />}
       <ButtonText style={textStyle}>{value}</ButtonText>
       {hasIconRight && iconRight && <Img src={iconRight} style={imgStyle} />}
     </Button>

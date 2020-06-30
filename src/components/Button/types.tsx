@@ -10,6 +10,7 @@ export type ButtonPropType = {
     textStyle?: object,
     imgStyle?: object,
     value?: string,
+    iconLeftStyle?: object,
     hasIconLeft?: boolean,
     successMode?: boolean,
     outlineMode?: boolean,

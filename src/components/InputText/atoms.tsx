@@ -53,4 +53,5 @@ export const Label = s.label`
 export const LabelText = s.span`
   width: 100%;
   text-transform: uppercase;
+  margin-bottom: 5px;
 `

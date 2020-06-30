@@ -8,7 +8,7 @@ import Button from '../../components/Button';
 import { ControlButtons } from '../../components/Button/atoms';
 import { getPropByPath, generateFormData } from './helper';
 import checkIcon from './../../icons/check.png'
-import closeIcon from './../../icons/close.png'
+import closeIcon from './../../icons/close-error.png'
 
 
 const EditItem: React.FC<any> =  (props) => {
@@ -87,6 +87,9 @@ const EditItem: React.FC<any> =  (props) => {
                         outlineMode
                         hasIconLeft={!toEditItem.status.verified}
                         iconLeft={closeIcon}
+                        iconLeftStyle={{
+                            height: 14
+                        }}
                         customWidth="50px"
                         customMargin="0 0 0 10px"
                     />
