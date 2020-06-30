@@ -116,7 +116,7 @@ const EditItem: React.FC<any> =  (props) => {
                         customWidth="280px"
                         isDanger
                         hasIconLeft={false}
-                        onClick={e => alert('please reset the sate')}
+                        onClick={e => history.push('/')}
                         value="Reset" 
                     />
                 </ControlButtons>
