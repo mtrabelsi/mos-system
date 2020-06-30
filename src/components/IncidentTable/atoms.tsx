@@ -6,10 +6,19 @@ export const TableItemWrapper = s.section`
     border-bottom: 1px solid silver;
     padding: 2px;
     :hover {
-        border: 1px solid ${primarytColor};
         cursor: pointer;
-        transform: scale(1.1);
-        -webkit-transition: all 0.2s ease-in-out;
+        animation-name: example;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        @keyframes example {
+            from {
+                border-bottom: 1px solid silver;
+            }
+            to {
+                border-bottom: 1px solid ${primarytColor};
+                background-color: rgba(60, 116, 59, 0.1);
+            }
+          }
     }
 `
 const UppercaseDiv = s.div`
